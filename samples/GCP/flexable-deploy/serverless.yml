@@ -1,21 +1,28 @@
 frameworkVersion: '=1.32.0'
 
+tenant: mrdulin
+app: myapp-dev
 service: flexable-deploy
 
 provider:
   name: google
   runtime: nodejs
-  project: just-aloe-212502
-  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/nodejs-starter-7e52b0f6fe39.json
+  project: shadowsocks-218808
+  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/shadowsocks-218808-08093a4cffe3.json
 
 plugins:
   - serverless-google-cloudfunctions
 
 package:
   exclude:
-    - node_modules/**
-    - .gitignore
-    - .git/**
+    - ./**
+
+  include:
+    - src/**/*.js
+    - env.js
+    - index.js
+    - package.json
+    - package-lock.json
 
 functions:
   - ${file(./src/modules/post/serverless.yml):functions}
