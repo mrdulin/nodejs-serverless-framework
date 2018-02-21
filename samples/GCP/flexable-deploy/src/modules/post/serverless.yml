@@ -1,0 +1,31 @@
+frameworkVersion: '=1.32.0'
+
+service: flexable-deploy-post-module
+
+provider:
+  name: google
+  runtime: nodejs
+  project: just-aloe-212502
+  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/nodejs-starter-7e52b0f6fe39.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+  include:
+    - /Users/ldu020/workspace/nodejs-serverless-framework/samples/GCP/flexable-deploy/package.json
+    - /Users/ldu020/workspace/nodejs-serverless-framework/samples/GCP/flexable-deploy/package-lock.json
+
+functions:
+  createPost:
+    handler: createPost
+    events:
+      - http: path
+  updatePost:
+    handler: updatePost
+    events:
+      - http: path

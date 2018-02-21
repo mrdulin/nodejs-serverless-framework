@@ -1,0 +1,23 @@
+service: exclude-development-dependencies
+
+provider:
+  name: google
+  runtime: nodejs
+  project: just-aloe-212502
+  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/nodejs-starter-7e52b0f6fe39.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    # - node_modules/**
+    - .gitignore
+    - .git/**
+  excludeDevDependencies: true
+
+functions:
+  excludeDevDependencies:
+    handler: excludeDevDependencies
+    events:
+      - http: path
