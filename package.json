@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-serverless-framework",
+  "version": "1.0.0",
+  "description": "Node.js Serverless Framework Code Lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrdulin/nodejs-serverless-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrdulin/nodejs-serverless-framework/issues"
+  },
+  "homepage": "https://github.com/mrdulin/nodejs-serverless-framework#readme",
+  "devDependencies": {
+    "serverless": "^1.32.0"
+  },
+  "dependencies": {
+    "serverless-google-cloudfunctions": "^2.0.0"
+  }
+}
