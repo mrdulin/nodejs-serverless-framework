@@ -1,0 +1,8 @@
+getBar:
+  handler: getBar
+  events:
+    - http: path
+deleteBar:
+  handler: deleteBar
+  events:
+    - http: path

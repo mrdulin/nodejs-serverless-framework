@@ -21,3 +21,4 @@ package:
 
 functions:
   - ${file(./foo/functions.yml)}
+  - ${file(./bar/functions.yml)}

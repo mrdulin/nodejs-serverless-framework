@@ -1,1 +1,9 @@
-module.exports = require('./foo');
+const { getFoo, deleteFoo } = require('./foo');
+const { getBar, deleteBar } = require('./bar');
+
+module.exports = {
+  getFoo,
+  deleteFoo,
+  getBar,
+  deleteBar
+};
