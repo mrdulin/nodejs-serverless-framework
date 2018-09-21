@@ -1,0 +1,35 @@
+service: gcp-env-variables
+
+custom: ${file(./env.js):env}
+
+provider:
+  name: google
+  runtime: nodejs
+  project: pg-gx-e-app-700458
+  region: us-central1
+  credentials: ~/workspace/nodejs-serverless-framework/.gcp/pg-gx-e-app-700458-98b46018b4ea.json
+  environment:
+    EMAIL_SERVICE_API_KEY: ${self:custom.EMAIL_SERVICE_API_KEY}
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  createUser:
+    handler: createUser
+    events:
+      - http: path
+    environment:
+      PASSWORD_ITERATIONS: ${self:custom.PASSWORD_ITERATIONS}
+      PASSWORD_DERIVED_KEY_LENGTH: ${self:custom.PASSWORD_DERIVED_KEY_LENGTH}
+
+  resetPassword:
+    handler: resetPassword
+    events:
+      - http: path

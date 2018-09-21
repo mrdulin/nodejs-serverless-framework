@@ -1,0 +1,7 @@
+module.exports.env = () => {
+  return {
+    EMAIL_SERVICE_API_KEY: 'KEYEXAMPLE1234',
+    PASSWORD_ITERATIONS: 4096,
+    PASSWORD_DERIVED_KEY_LENGTH: 256
+  };
+};
