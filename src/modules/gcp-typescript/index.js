@@ -16,13 +16,15 @@ function searchBook(req, res) {
     request_promise_1.default(options)
         .then(function (data) {
         var error = data.Error, total = data.Total, books = data.Books;
-        console.log(error, total, books);
         if (error !== '0') {
             return Promise.reject(error);
         }
         return Promise.resolve({ total: total, books: books });
     })
-        .then(function (data) { return res.json(data); })
+        .then(function (data) {
+        console.log('Search Books Successfully');
+        res.json(data);
+    })
         .catch(function (err) {
         var msg;
         if (err instanceof Error) {

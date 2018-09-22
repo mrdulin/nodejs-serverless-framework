@@ -5,7 +5,12 @@ function deploy(localPath: string, functionName: string) {
 }
 
 function clearLogs() {
-  console.log(cp.execSync('functions logs clear').toString());
+  try {
+    console.log('clear logs');
+    cp.execSync('functions logs clear');
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export { deploy, clearLogs };

@@ -15,13 +15,15 @@ function searchBook(req, res) {
   rp(options)
     .then((data: any) => {
       const { Error: error, Total: total, Books: books } = data;
-      console.log(error, total, books);
       if (error !== '0') {
         return Promise.reject(error);
       }
       return Promise.resolve({ total, books });
     })
-    .then(data => res.json(data))
+    .then(data => {
+      console.log('Search Books Successfully');
+      res.json(data);
+    })
     .catch(err => {
       let msg: string;
       if (err instanceof Error) {

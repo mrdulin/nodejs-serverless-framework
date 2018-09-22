@@ -1,0 +1,28 @@
+service: gcp-background-function
+
+provider:
+  name: google
+  runtime: nodejs
+  project: pg-gx-e-app-700458
+  region: us-central1
+  # the path to the credentials file needs to be absolute
+  credentials: ~/workspace/nodejs-serverless-framework/.gcp/pg-gx-e-app-700458-98b46018b4ea.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  bk:
+    handler: bk
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: projects/pg-gx-e-app-700458/topics/my-topic
