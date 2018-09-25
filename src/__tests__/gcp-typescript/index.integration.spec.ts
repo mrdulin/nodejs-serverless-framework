@@ -1,14 +1,18 @@
 import cp from 'child_process';
 import rp from 'request-promise';
+import path from 'path';
 
-import { logger } from '../../util/logger';
+import { logger, deploy, clearLogs } from '../../util';
 
 jest.setTimeout(30000);
 
-function clearLogs() {
-  console.log('clear functions logs');
-  cp.execSync('functions logs clear');
-}
+const functionName = 'searchBook';
+const localPath = path.resolve(process.cwd(), 'src/modules/gcp-typescript');
+
+beforeAll(() => {
+  deploy(localPath, functionName);
+  clearLogs();
+});
 
 describe('gcp-typescript test suites', () => {
   const configJSON: string = cp.execSync('functions config list --json').toString();
@@ -16,10 +20,6 @@ describe('gcp-typescript test suites', () => {
   const baseUrl = `http://${config.host}:${config.supervisorPort}/${config.projectId}/${config.region}`;
 
   describe('searchBook', () => {
-    beforeEach(() => {
-      clearLogs();
-    });
-
     it.skip('Test', () => {
       const startTime = new Date(Date.now()).toISOString();
       const data = JSON.stringify({ query: 'nodejs' });
@@ -42,8 +42,8 @@ describe('gcp-typescript test suites', () => {
         json: true
       };
       const data = await rp(options);
-      logger.info(data);
-      expect(data.total).toBeInstanceOf(Number);
+      // logger.info(data);
+      expect(typeof data.total).toBe('string');
     });
   });
 });

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node.js Serverless Framework Code Lab",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "npm run build && jest --detectOpenHandles",
     "build": "tsc"
   },
   "repository": {
