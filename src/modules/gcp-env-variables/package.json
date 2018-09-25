@@ -9,6 +9,7 @@
   "author": "serverless.com",
   "license": "MIT",
   "devDependencies": {
-    "serverless-google-cloudfunctions": "^1.2.0"
+    "serverless-dotenv-plugin": "^2.0.0",
+    "serverless-google-cloudfunctions": "https://github.com/nethunter/serverless-google-cloudfunctions/tarball/master"
   }
 }
