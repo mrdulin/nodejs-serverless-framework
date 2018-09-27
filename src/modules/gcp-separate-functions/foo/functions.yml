@@ -1,8 +1,0 @@
-getFoo:
-  handler: getFoo
-  events:
-    - http: path
-deleteFoo:
-  handler: deleteFoo
-  events:
-    - http: path

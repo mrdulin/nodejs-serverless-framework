@@ -1,0 +1,6 @@
+bk:
+  handler: bk
+  events:
+    - event:
+        eventType: providers/cloud.pubsub/eventTypes/topic.publish
+        resource: projects/${env:PROJECT_ID}/topics/${env:TOPIC}

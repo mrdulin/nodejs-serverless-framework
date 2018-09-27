@@ -1,12 +1,10 @@
-'use strict';
-
 import rp from 'request-promise';
 
-const api: string = 'http://it-ebooks-api.info/v1';
+const { IT_EBOOKS_API } = process.env;
 
 function searchBook(req, res) {
   const { query = '', page = 1 } = req.body;
-  const uri = `${api}/search/${query}/page/${page}`;
+  const uri = `${IT_EBOOKS_API}/search/${query}/page/${page}`;
   console.log('uri: ', uri);
   const options = {
     uri,
@@ -37,4 +35,4 @@ function searchBook(req, res) {
     });
 }
 
-export { searchBook };
+export { searchBook, functionName };

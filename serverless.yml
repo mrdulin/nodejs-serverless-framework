@@ -1,0 +1,23 @@
+service: nodejs-serverless-framework
+
+provider:
+  name: google
+  runtime: nodejs
+  project: ${env:PROJECT_ID}
+  region: us-central1
+  credentials: ${env:CREDENTIALS}
+
+plugins:
+  - serverless-google-cloudfunctions
+  - serverless-dotenv-plugin
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  - ${file(./src/modules/book/functions.yml)}
+  - ${file(./src/modules/gcp-get-started/functions.yml)}
+  - ${file(./src/modules/gcp-background-function/functions.yml)}

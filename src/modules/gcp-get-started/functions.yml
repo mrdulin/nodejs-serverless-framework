@@ -1,0 +1,4 @@
+getStarted:
+  handler: getStarted
+  events:
+    - http: path
