@@ -23,3 +23,4 @@ functions:
   - ${file(./src/modules/book/functions.yml)}
   - ${file(./src/modules/gcp-get-started/functions.yml)}
   - ${file(./src/modules/gcp-background-function/functions.yml)}
+  - ${file(./src/modules/gcp-storage-trigger/functions.yml)}

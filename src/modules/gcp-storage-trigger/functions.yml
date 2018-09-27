@@ -1,0 +1,6 @@
+helloGCSGeneric:
+  handler: helloGCSGeneric
+  events:
+    - event:
+        eventType: google.storage.object.finalize
+        resource: projects/${env:PROJECT_ID}/buckets/${env:BUCKET_NAME}
