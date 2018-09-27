@@ -3,6 +3,7 @@ import rp from 'request-promise';
 const { IT_EBOOKS_API } = process.env;
 
 function searchBook(req, res) {
+  console.log('process.env', process.env);
   const { query = '', page = 1 } = req.body;
   const uri = `${IT_EBOOKS_API}/search/${query}/page/${page}`;
   console.log('uri: ', uri);
@@ -35,4 +36,4 @@ function searchBook(req, res) {
     });
 }
 
-export { searchBook, functionName };
+export { searchBook };

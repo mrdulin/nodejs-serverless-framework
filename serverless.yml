@@ -6,6 +6,8 @@ provider:
   project: ${env:PROJECT_ID}
   region: us-central1
   credentials: ${env:CREDENTIALS}
+  environment:
+    PROJECT_ID: ${env:PROJECT_ID}
 
 plugins:
   - serverless-google-cloudfunctions

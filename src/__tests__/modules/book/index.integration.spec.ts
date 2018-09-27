@@ -24,6 +24,10 @@ beforeAll(() => {
   ).toString();
 });
 
+afterAll(() => {
+  fnEmulator.stop();
+});
+
 describe('book module test suites', () => {
   describe('searchBook test suites', () => {
     const baseUrl = fnEmulator.getBaseEndpoint();

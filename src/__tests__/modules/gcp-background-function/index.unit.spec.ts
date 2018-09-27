@@ -1,4 +1,4 @@
-import { bk } from '../../modules/gcp-background-function';
+import { bk } from '../../../modules/gcp-background-function';
 
 console.log = jest.fn();
 

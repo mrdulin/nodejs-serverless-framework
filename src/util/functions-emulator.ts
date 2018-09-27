@@ -8,15 +8,18 @@ class FunctionEmulator {
   constructor(opts: IFunctionEmulatorOpts) {
     this.functionName = opts.functionName;
   }
-  public call(message: any, envVars?: { [key: string]: string }) {
-    const data = this.buildEventData(message);
+  public call(data: any, envVars?: { [key: string]: string }) {
+    let json: string = data;
+    if (typeof data !== 'string') {
+      json = JSON.stringify(data);
+    }
     const options = {
       env: {
         ...process.env,
         ...envVars
       }
     };
-    cp.execSync(`functions call ${this.functionName} --data '${data}'`, options);
+    cp.execSync(`functions call ${this.functionName} --data '${json}'`, options);
   }
 
   public buildEventData(message: any): string {

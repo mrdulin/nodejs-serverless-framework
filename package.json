@@ -4,7 +4,10 @@
   "description": "Node.js Serverless Framework Code Lab",
   "scripts": {
     "test": "npm run build && jest --detectOpenHandles",
-    "build": "tsc"
+    "deploy": "SLS_DEBUG=* serverless deploy --verbose",
+    "build": "tsc",
+    "printConfig": "serverless print",
+    "remove": "serverless remove"
   },
   "repository": {
     "type": "git",
@@ -20,16 +23,16 @@
   "devDependencies": {
     "@google-cloud/functions-emulator": "^1.0.0-beta.5",
     "@types/jest": "^23.3.2",
-    "@types/node": "^10.10.1",
+    "@types/node": "^10.11.0",
     "@types/request-promise": "^4.1.42",
     "jest": "^23.6.0",
+    "serverless": "^1.32.0",
+    "serverless-dotenv-plugin": "^2.0.0",
+    "serverless-google-cloudfunctions": "https://github.com/nethunter/serverless-google-cloudfunctions/tarball/master",
     "ts-jest": "^23.10.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.3",
-    "winston": "^3.1.0",
-    "serverless": "^1.32.0",
-    "serverless-dotenv-plugin": "^2.0.0",
-    "serverless-google-cloudfunctions": "https://github.com/nethunter/serverless-google-cloudfunctions/tarball/master"
+    "winston": "^3.1.0"
   },
   "dependencies": {
     "request": "^2.88.0",

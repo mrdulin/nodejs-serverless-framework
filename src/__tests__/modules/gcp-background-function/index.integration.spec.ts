@@ -9,15 +9,26 @@ const topicName = 'my-topic';
 const fnEmulator = new FunctionEmulator({ functionName });
 
 beforeAll(() => {
-  console.log(cp.execSync(`cd ${localPath}; functions deploy ${functionName} --trigger-topic=${topicName}`).toString());
+  console.log(
+    cp
+      .execSync(`cd ${localPath} && functions start && functions deploy ${functionName} --trigger-topic=${topicName}`)
+      .toString()
+  );
+});
+
+afterAll(() => {
+  fnEmulator.stop();
 });
 
 describe('gcp-background-function integration test suites', () => {
   beforeEach(() => {
     fnEmulator.clearLogs();
   });
+
   it('t-1', () => {
-    fnEmulator.call({ data: Math.random() });
+    const name = Math.random();
+    const data = fnEmulator.buildEventData(name);
+    fnEmulator.call(data);
     const logs = fnEmulator.readLogs();
     expect(logs).toContain(`Hello, ${name}!`);
   });

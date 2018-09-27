@@ -1,6 +1,6 @@
 # Serverless
 .serverless
-.env
+# .env
 tmp
 .coveralls.yml
 
@@ -35,5 +35,5 @@ node_modules
 # OS
 .DS_Store
 .tmp
-.env
 .gcp
+# .env.production
