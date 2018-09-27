@@ -95,6 +95,22 @@ searchBook
 ![function-detail](./docs/function-detail.png)
 ![env-vars](./docs/env-vars.png)
 
+删除所有`cloud function`及相关资源:
+
+```bash
+☁  nodejs-serverless-framework [master] ⚡  docker run --env-file ./.env.production -v ~/workspace/nodejs-serverless-framework/.gcp/:/app/.gcp sls:v2 npm run remove
+
+> nodejs-serverless-framework@1.0.0 remove /app
+> serverless remove
+
+Serverless: DOTENV: Could not find .env file.
+Serverless: Removing artifacts in deployment bucket...
+Serverless: Removing deployment...
+Serverless: Checking deployment remove progress...
+...
+Serverless: Done...
+```
+
 ## 注意
 
 本项目为了演示目的，将`.env`和`.env.production`文件上传到了`github`仓库。生产环境请将这两个文件加入`.gitignore`，通过`docker`指定`--env-file`指定环境变量文件，和`-v`挂载`GCP`的`credential`文件
