@@ -12,7 +12,10 @@ Node.js Serverless Framework Code Lab
   管理起来很方便。
 
 - 各`cloud function`的环境变量也由`serverless framework`统一管理。通过`serverless-dotenv-plugin`插件，即可加载项目根目录下的`.env`中列出的所有环境变量。可以很好的与`Docker`集成。
-  在`serverless.yml`文件中，可以配置全局环境变量和针对每个`cloud function`的环境变量。
+  在`serverless.yml`文件中，可以配置全局环境变量和针对每个`cloud function`的环境变量。
+
+- 如何将`docker`命令运行时通过`-e`参数指定的环境变量传入到`serverless.yml`中？
+  创建环境变量文件`env.js`，在`serverless.yml`中的`custom`字段中引用，在配置的其他地方，可以通过`${self:custom.REGION}`的方式应用`env.js`中导出的变量，这种方式可以很好的与`docker`集成，`docker run -e RUNTIME=nodejs8 ...`传递的环境变量，可以被传入`serverless.yml`文件中。
 
 ## docker
 

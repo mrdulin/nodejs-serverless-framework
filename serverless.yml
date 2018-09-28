@@ -1,10 +1,14 @@
+frameworkVersion: '=1.32.0'
+
 service: nodejs-serverless-framework
+
+custom: ${file(./env.js)}
 
 provider:
   name: google
-  runtime: nodejs
+  runtime: ${self:custom.RUNTIME}
   project: ${env:PROJECT_ID}
-  region: us-central1
+  region: ${self:custom.REGION}
   credentials: ${env:CREDENTIALS}
   environment:
     PROJECT_ID: ${env:PROJECT_ID}

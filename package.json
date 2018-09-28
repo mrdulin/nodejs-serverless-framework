@@ -6,7 +6,7 @@
     "test": "npm run build && jest --detectOpenHandles",
     "deploy": "SLS_DEBUG=* serverless deploy --verbose",
     "build": "tsc",
-    "printConfig": "serverless print",
+    "print": "serverless print",
     "remove": "serverless remove"
   },
   "repository": {
