@@ -1,3 +1,5 @@
+frameworkVersion: '=1.32.0'
+
 service: gcf-quick-start # NOTE: Don't put the word "google" in here
 
 provider:

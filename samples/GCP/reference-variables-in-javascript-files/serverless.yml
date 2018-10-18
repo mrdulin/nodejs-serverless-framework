@@ -1,0 +1,27 @@
+frameworkVersion: '=1.32.0'
+
+service: reference-variables-in-javascript-files
+
+custom: ${file(./env.js)}
+
+provider:
+  name: google
+  region: ${self:custom.region}
+  runtime: nodejs
+  project: ${self:custom.projectId}
+  credentials: ${self:custom.credentials}
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  first:
+    handler: http
+    events:
+      - http: path
