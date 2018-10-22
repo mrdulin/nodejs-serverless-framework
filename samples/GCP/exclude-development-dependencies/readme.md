@@ -51,3 +51,49 @@ Serverless: Compiling function "search"...
 ![image](https://user-images.githubusercontent.com/17866683/47280035-fbf3b200-d606-11e8-9197-c2727c0d1884.png)
 
 返回结果正确，运行正常。
+
+## docker
+
+build an image:
+
+```bash
+☁  exclude-development-dependencies [master] ⚡  docker build -t nodejs-sls .
+Sending build context to Docker daemon  185.9kB
+Step 1/6 : FROM mhart/alpine-node:8.7.0
+ ---> 3f4dca7b43ba
+Step 2/6 : WORKDIR /app
+Removing intermediate container d26be32d5312
+ ---> 2765a4b50696
+Step 3/6 : COPY package.json package-lock.json /app/
+ ---> feb7b1a1cd15
+Step 4/6 : RUN npm install
+ ---> Running in a1cf717e0647
+
+> spawn-sync@1.0.15 postinstall /app/node_modules/spawn-sync
+> node postinstall
+
+
+> serverless@1.32.0 postinstall /app/node_modules/serverless
+> node ./scripts/postinstall.js
+
+npm WARN exclude-development-dependencies@0.1.0 No description
+npm WARN exclude-development-dependencies@0.1.0 No repository field.
+
+added 441 packages in 16.839s
+Removing intermediate container a1cf717e0647
+ ---> 293707d67a63
+Step 5/6 : ADD . /app
+ ---> 435e70ffc4a2
+Step 6/6 : CMD ["npm", "run", "print"]
+ ---> Running in 643384e17ecf
+Removing intermediate container 643384e17ecf
+ ---> ccea471f51a4
+Successfully built ccea471f51a4
+Successfully tagged nodejs-sls:latest
+```
+
+deploy:
+
+```bash
+docker run -e PROJECT_ID=just-aloe-212502 -e CREDENTIALS=/tmp/nodejs-starter-7e52b0f6fe39.json -v ~/workspace/nodejs-serverless-framework/.gcp/:/tmp nodejs-sls npm run deploy
+```
