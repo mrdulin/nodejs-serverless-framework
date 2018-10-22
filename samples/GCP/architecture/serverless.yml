@@ -1,6 +1,6 @@
 frameworkVersion: '=1.32.0'
 
-service: nodejs-serverless-framework
+service: architecture
 
 custom: ${file(./env.js)}
 
@@ -19,9 +19,16 @@ plugins:
 
 package:
   exclude:
-    - node_modules/**
-    - .gitignore
-    - .git/**
+    # - node_modules/**
+    # - .gitignore
+    # - .git/**
+    - ./**
+
+  include:
+    - ./src/**/*.js
+    - package.json
+    - package-lock.json
+    - index.js
 
 functions:
   - ${file(./src/modules/book/functions.yml)}

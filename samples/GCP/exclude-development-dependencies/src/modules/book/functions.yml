@@ -1,0 +1,4 @@
+search:
+  handler: search
+  events:
+    - http: path

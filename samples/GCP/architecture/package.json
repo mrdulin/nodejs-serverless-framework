@@ -1,25 +1,14 @@
 {
-  "name": "nodejs-serverless-framework",
+  "name": "architecture",
   "version": "1.0.0",
-  "description": "Node.js Serverless Framework Code Lab",
+  "description": "Node.js Serverless Framework architecture",
   "scripts": {
     "test": "npm run build && jest --detectOpenHandles",
-    "deploy": "SLS_DEBUG=* serverless deploy --verbose",
+    "deploy": "npm run build && SLS_DEBUG=* serverless deploy --verbose",
     "build": "tsc",
     "print": "serverless print",
     "remove": "serverless remove"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrdulin/nodejs-serverless-framework.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mrdulin/nodejs-serverless-framework/issues"
-  },
-  "homepage": "https://github.com/mrdulin/nodejs-serverless-framework#readme",
   "devDependencies": {
     "@google-cloud/functions-emulator": "^1.0.0-beta.5",
     "@types/jest": "^23.3.2",

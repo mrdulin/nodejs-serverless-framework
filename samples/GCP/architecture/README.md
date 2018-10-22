@@ -15,6 +15,8 @@
 - 如何将`docker`命令运行时通过`-e`参数指定的环境变量传入到`serverless.yml`中？
   创建环境变量文件`env.js`，在`serverless.yml`中的`custom`字段中引用，在配置的其他地方，可以通过`${self:custom.REGION}`的方式应用`env.js`中导出的变量，这种方式可以很好的与`docker`集成，`docker run -e RUNTIME=nodejs8 ...`传递的环境变量，可以被传入`serverless.yml`文件中。
 
+## deploy locally
+
 ## docker
 
 build docker image

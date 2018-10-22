@@ -1,10 +1,13 @@
 service: exclude-development-dependencies
 
+custom: ${file(./env.js)}
+
 provider:
   name: google
+  region: ${self:custom.region}
   runtime: nodejs
-  project: just-aloe-212502
-  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/nodejs-starter-7e52b0f6fe39.json
+  project: ${self:custom.projectId}
+  credentials: ${self:custom.credentials}
 
 plugins:
   - serverless-google-cloudfunctions
@@ -12,12 +15,14 @@ plugins:
 package:
   exclude:
     # - node_modules/**
-    - .gitignore
-    - .git/**
-  excludeDevDependencies: true
+    # - .gitignore
+    # - .git/**
+    - ./**
+  include:
+    - ./src/**/*.js
+    - package.json
+    - package-lock.json
+    - index.js
 
 functions:
-  excludeDevDependencies:
-    handler: excludeDevDependencies
-    events:
-      - http: path
+  - ${file(./src/modules/book/functions.yml)}

@@ -1,6 +1,0 @@
-searchBook:
-  handler: searchBook
-  events:
-    - http: path
-  environment:
-    IT_EBOOKS_API: ${env:IT_EBOOKS_API}

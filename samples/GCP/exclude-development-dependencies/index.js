@@ -1,8 +1,5 @@
-'use strict';
-
-const _ = require('lodash');
-
-exports.excludeDevDependencies = (request, response) => {
-  const msg = _.join(['Hello', 'World!'], '~~~~');
-  response.status(200).send(msg);
-};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var book_1 = require("./src/modules/book");
+exports.search = book_1.search;
+//# sourceMappingURL=index.js.map
