@@ -7,3 +7,7 @@ exports.http = (request, response) => {
 exports.event = (event, callback) => {
   callback();
 };
+
+exports.GCS = () => {
+  console.log('GCS');
+};

@@ -1,20 +1,16 @@
-frameworkVersion: '=1.32.0'
-
 service: gcf-quick-start # NOTE: Don't put the word "google" in here
 
 provider:
   name: google
-  runtime: nodejs
-  project: just-aloe-212502
-
+  runtime: nodejs8
+  region: us-central1
+  project: shadowsocks-218808
   # the path to the credentials file needs to be absolute
-  credentials: /Users/ldu020/workspace/nodejs-serverless-framework/.gcp/nodejs-starter-7e52b0f6fe39.json
+  credentials: /Users/ldu020/workspace/github.com/mrdulin/nodejs-serverless-framework/.gcp/shadowsocks-218808-18201f441a6b.json
 
 plugins:
   - serverless-google-cloudfunctions
 
-# needs more granular excluding in production as only the serverless provider npm
-# package should be excluded (and not the whole node_modules directory)
 package:
   exclude:
     - node_modules/**
@@ -26,21 +22,16 @@ functions:
     handler: http
     events:
       - http: path
-  # NOTE: the following uses an "event" event (pubSub event in this case).
-  # Please create the corresponding resources in the Google Cloud
-  # before deploying this service through Serverless
-  #second:
-  #  handler: event
-  #  events:
-  #    - event:
-  #        eventType: providers/cloud.pubsub/eventTypes/topic.publish
-  #        resource: projects/*/topics/my-topic
-
-# you can define resources, templates etc. the same way you would in a
-# Google Cloud deployment configuration
-#resources:
-#  resources:
-#    - type: storage.v1.bucket
-#      name: my-serverless-service-bucket
-#  imports:
-#    - path: my_template.jinja
+  event:
+    handler: event
+    events: 
+      - event:
+          eventType: google.pubsub.topic.publish
+          resource: projects/shadowsocks-218808/topics/slideshowp2
+  GCS:
+    handler: GCS
+    events: 
+      - event:
+          eventType: google.storage.object.finalize
+          resource: projects/shadowsocks-218808/buckets/slideshowp2
+      

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "serverless deploy",
+    "deploy": "SLS_DEBUG=* serverless deploy",
     "remove": "serverless remove"
   },
   "author": "serverless.com",
   "license": "MIT",
   "devDependencies": {
-    "serverless-google-cloudfunctions": "^1.2.0"
+    "serverless": "^1.46.0",
+    "serverless-google-cloudfunctions": "^2.3.2"
   }
 }
