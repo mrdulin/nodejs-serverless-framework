@@ -5,13 +5,12 @@ provider:
   runtime: nodejs8
   region: us-central1
   project: shadowsocks-218808
-  # the path to the credentials file needs to be absolute
-  credentials: /Users/ldu020/workspace/github.com/mrdulin/nodejs-serverless-framework/.gcp/shadowsocks-218808-18201f441a6b.json
+  credentials: /Users/elsa/workspace/github.com/mrdulin/nodejs-serverless-framework/.gcp/shadowsocks-218808-9b73a2aa3179.json
   labels:
 
 plugins:
-  # - serverless-google-cloudfunctions
-  - serverless-cloudfunction-offline
+  - serverless-google-cloudfunctions
+  # - serverless-cloudfunction-offline
 
 package:
   exclude:
@@ -24,18 +23,15 @@ functions:
     handler: http
     events:
       - http: path
-    labels:
   event:
     handler: event
     events:
       - event:
           eventType: google.pubsub.topic.publish
           resource: projects/shadowsocks-218808/topics/slideshowp2
-    labels:
   GCS:
     handler: GCS
     events:
       - event:
           eventType: google.storage.object.finalize
           resource: projects/shadowsocks-218808/buckets/slideshowp2
-    labels:
