@@ -147,7 +147,9 @@ functions:
 
 ![](https://raw.githubusercontent.com/mrdulin/pic-bucket-01/master/20190824232618.png)
 
-由于 serverless-framework 及其插件内部调用各个云服务提供商提供的 REST/RPC API，因此使用时需要保证你的网络环境能访问这些服务。
+由于 serverless-framework 及其插件内部调用各个云服务提供商提供的 REST/RPC API，因此使用时需要保证你的网络环境能访问这些服务。使用阿里云函数计算的同学可以看一下这个插件[serverless-aliyun-function-compute](https://github.com/aliyun/serverless-aliyun-function-compute)
+
+![](https://raw.githubusercontent.com/mrdulin/pic-bucket-01/master/20190825001613.png)
 
 ### 参考
 
