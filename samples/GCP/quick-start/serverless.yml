@@ -9,8 +9,8 @@ provider:
   labels:
 
 plugins:
-  - serverless-google-cloudfunctions
-  # - serverless-cloudfunction-offline
+  # - serverless-google-cloudfunctions
+  - serverless-cloudfunction-offline
 
 package:
   exclude:
